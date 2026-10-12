@@ -11,6 +11,7 @@ Los módulos de esta fase trabajan sobre **arrays mutables** (`number[]`), que s
 | Módulo | Especificación | Enfoque | Tests | Estado |
 |--------|---------------|---------|:-----:|:------:|
 | [`naive_sort/`](naive_sort/) | [05_Naive_Sort](https://yorche3.github.io/programming_languages/core/algorithms/05_Naive_Sort/) | `npm test` (Jest + ts-jest) | 24 | ✅ |
+| [`data_structures_basics/`](data_structures_basics/) | [06_Data_Structures_Basics](https://yorche3.github.io/programming_languages/core/algorithms/06_Data_Structures_Basics/) | `npm test` (Jest + ts-jest) | 5 | ✅ |
 
 ---
 
@@ -18,15 +19,34 @@ Los módulos de esta fase trabajan sobre **arrays mutables** (`number[]`), que s
 
 ```text
 algorithms/
-└── naive_sort/                  # 05_Naive_Sort
+├── naive_sort/                  # 05_Naive_Sort
+│   ├── package.json             # scripts test/build + devDependencies
+│   ├── tsconfig.json            # strict, ES2022, NodeNext
+│   ├── jest.config.cjs          # preset ts-jest, testMatch **/*.test.ts
+│   ├── .gitignore               # node_modules/, dist/, coverage/, package-lock.json
+│   ├── src/
+│   │   └── naive_sort.ts        # clase NaiveSort: 3 métodos estáticos
+│   ├── test/
+│   │   └── naive_sort.test.ts   # 3 algoritmos × 8 casos
+│   └── README.md
+└── data_structures_basics/      # 06_Data_Structures_Basics
     ├── package.json             # scripts test/build + devDependencies
     ├── tsconfig.json            # strict, ES2022, NodeNext
-    ├── jest.config.cjs          # preset ts-jest, testMatch **/*.test.ts
+    ├── jest.config.cjs          # preset ts-jest, moduleNameMapper
     ├── .gitignore               # node_modules/, dist/, coverage/, package-lock.json
     ├── src/
-    │   └── naive_sort.ts        # clase NaiveSort: 3 métodos estáticos
+    │   ├── index.ts             # barrel: Node, LinkedList, Stack, Queue
+    │   ├── node.ts              # clase Node
+    │   ├── linked-list.ts       # clase LinkedList
+    │   ├── stack.ts             # clase Stack
+    │   └── queue.ts             # clase Queue
     ├── test/
-    │   └── naive_sort.test.ts   # 3 algoritmos × 8 casos
+    │   ├── data_structures_basics.test.ts
+    │   ├── node.test.ts
+    │   ├── linked-list.test.ts
+    │   ├── stack.test.ts
+    │   ├── queue.test.ts
+    │   └── scenario-runner.ts
     └── README.md
 ```
 
@@ -59,6 +79,12 @@ algorithms/
 ```bash
 # Naive Sort Tests
 cd naive_sort
+npm install
+npm run build
+npm test
+
+# Data Structures Basics Tests
+cd ../data_structures_basics
 npm install
 npm run build
 npm test
