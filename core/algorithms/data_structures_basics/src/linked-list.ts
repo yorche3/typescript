@@ -19,32 +19,63 @@ export class LinkedList {
 
   /** Esqueleto: valor de la cabeza, o -1 cuando la lista está vacía. No muta. */
   get head(): number {
-    return -1;
+    return this.#head?.value ?? -1;
   }
 
   /** Esqueleto: `true` solo si no hay nodos. */
   get isEmpty(): boolean {
-    return false;
+    return this.#head === null;
   }
 
   /** Esqueleto: número de nodos (el centinela es -1 mientras sea esqueleto). */
   get size(): number {
-    return -1;
+    return this.#count;
   }
 
   /** Esqueleto: inserta al principio. O(1). Sin resultado de fallo. */
   insertHead(value: number): void {
-    void value;
+    const newNode = new Node(value);
+    newNode.next = this.#head;
+    this.#head = newNode;
+    if (this.#tail === null) {
+      this.#tail = newNode;
+    }
+    this.#count++;
   }
 
   /** Esqueleto: inserta al final. O(1). Sin resultado de fallo. */
   insertTail(value: number): void {
-    void value;
+    const newNode = new Node(value);
+    if (this.#tail) {
+      this.#tail.next = newNode;
+    }
+    this.#tail = newNode;
+    if (this.#head === null) {
+      this.#head = newNode;
+    }
+    this.#count++;
   }
 
   /** Esqueleto: borra la primera aparición; `false` cuando el valor no estaba. O(n). */
   delete(value: number): boolean {
-    void value;
+    let current = this.#head;
+    let prev: Node | null = null;
+    while (current) {
+      if (current.value === value) {
+        if (prev) {
+          prev.next = current.next;
+        } else {
+          this.#head = current.next;
+        }
+        if (current.next === null) {
+          this.#tail = prev;
+        }
+        this.#count--;
+        return true;
+      }
+      prev = current;
+      current = current.next;
+    }
     return false;
   }
 }

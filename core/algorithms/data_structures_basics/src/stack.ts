@@ -17,26 +17,35 @@ export class Stack {
 
   /** Esqueleto: `true` solo si no hay nodos. */
   get isEmpty(): boolean {
-    return false;
+    return this.#top === null;
   }
 
   /** Esqueleto: número de nodos (el centinela es -1 mientras sea esqueleto). */
   get size(): number {
-    return -1;
+    return this.#count;
   }
 
   /** Esqueleto: valor de la cima, o -1 cuando está vacía. No muta. */
   get peek(): number {
-    return -1;
+    return this.#top?.value ?? -1;
   }
 
   /** Esqueleto: apila sobre la cima. O(1). Sin resultado de fallo. */
   push(value: number): void {
-    void value;
+    const newNode = new Node(value);
+    newNode.next = this.#top;
+    this.#top = newNode;
+    this.#count++;
   }
 
   /** Esqueleto: desapila el valor de la cima, o -1 cuando está vacía. O(1). */
   pop(): number {
-    return -1;
+    if (this.#top === null) {
+      return -1;
+    }
+    const value = this.#top.value;
+    this.#top = this.#top.next;
+    this.#count--;
+    return value;
   }
 }

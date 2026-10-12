@@ -18,26 +18,43 @@ export class Queue {
 
   /** Esqueleto: `true` solo si no hay nodos. */
   get isEmpty(): boolean {
-    return false;
+    return this.#front === null;
   }
 
   /** Esqueleto: número de nodos (el centinela es -1 mientras sea esqueleto). */
   get size(): number {
-    return -1;
+    return this.#count;
   }
 
   /** Esqueleto: valor del frente, o -1 cuando está vacía. No muta. */
   get peek(): number {
-    return -1;
+    return this.#front?.value ?? -1;
   }
 
   /** Esqueleto: encola por el final. O(1). Sin resultado de fallo. */
   enqueue(value: number): void {
-    void value;
+    const newNode = new Node(value);
+    if (this.#rear) {
+      this.#rear.next = newNode;
+    }
+    this.#rear = newNode;
+    if (this.#front === null) {
+      this.#front = newNode;
+    }
+    this.#count++;
   }
 
   /** Esqueleto: desencola el valor del frente, o -1 cuando está vacía. O(1). */
   dequeue(): number {
-    return -1;
+    if (this.#front === null) {
+      return -1;
+    }
+    const value = this.#front.value;
+    this.#front = this.#front.next;
+    if (this.#front === null) {
+      this.#rear = null;
+    }
+    this.#count--;
+    return value;
   }
 }

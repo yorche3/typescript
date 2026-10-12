@@ -29,16 +29,16 @@ export class Node {
 
   /** Esqueleto: valor de la celda. */
   get value(): number {
-    return -1;
+    return this.#value;
   }
 
   /** Esqueleto: enlace a la celda siguiente, o `null` cuando no hay ninguna. */
   get next(): Node | null {
-    return null;
+    return this.#next;
   }
 
   /** Esqueleto: reengancha el enlace y devuelve el enlace nuevo. */
   set next(next: Node | null) {
-    void next;
+    this.#next = next;
   }
 }
