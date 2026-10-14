@@ -8,13 +8,13 @@ Implementación de la especificación [01_Hello_World](https://yorche3.github.io
 
 | Archivo | Propósito |
 |---------|-----------|
-| [`helloworld.ts`](helloworld.ts) | Código fuente: imprime `"Hello, World! from TypeScript!"` en la salida estándar. |
+| [`hello_world.ts`](hello_world.ts) | Código fuente: imprime `"Hello, World! from TypeScript!"` en la salida estándar. |
 
 **Estructura de directorios esperada:**
 
 ```text
 helloworld/
-├── helloworld.ts  # Código fuente
+├── hello_world.ts  # Código fuente
 └── README.md      # Este archivo
 ```
 
@@ -34,7 +34,7 @@ helloworld/
    mkdir -p typescript/core/foundations/helloworld
    ```
 
-2. Escribir el archivo `helloworld.ts` con el código fuente.
+2. Escribir el archivo `hello_world.ts` con el código fuente.
 
 3. Compilarlo con `tsc` y ejecutar el JavaScript generado con Node.js.
 
@@ -81,7 +81,7 @@ tsc --version
 
 ```bash
 cd typescript/core/foundations/helloworld
-tsc helloworld.ts --target ES2022 --module CommonJS --outDir /tmp/typescript-helloworld-build
+tsc hello_world.ts --target ES2022 --module CommonJS --outDir /tmp/typescript-helloworld-build
 node /tmp/typescript-helloworld-build/helloworld.js
 ```
 
