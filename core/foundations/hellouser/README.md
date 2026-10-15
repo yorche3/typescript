@@ -10,13 +10,13 @@ Solicita un nombre mediante la entrada estándar y muestra un saludo personaliza
 
 | Archivo | Propósito |
 |---------|-----------|
-| [`hellouser.ts`](hellouser.ts) | Código fuente: solicita un nombre, lo lee con `readline` y muestra un saludo. |
+| [`hello_user.ts`](hello_user.ts) | Código fuente: solicita un nombre, lo lee con `readline` y muestra un saludo. |
 
 **Estructura de directorios esperada:**
 
 ```text
 hellouser/
-├── hellouser.ts  # Código fuente
+├── hello_user.ts  # Código fuente
 └── README.md     # Este archivo
 ```
 
@@ -36,7 +36,7 @@ hellouser/
    mkdir -p typescript/core/foundations/hellouser
    ```
 
-2. Escribir el archivo `hellouser.ts` con el código fuente.
+2. Escribir el archivo `hello_user.ts` con el código fuente.
 
 3. Compilarlo con `tsc` y ejecutar el JavaScript generado con Node.js.
 
@@ -94,12 +94,12 @@ En el estado actual del proyecto no están instaladas las declaraciones `@types/
 
 ```bash
 cd typescript/core/foundations/hellouser
-tsc hellouser.ts \
+tsc hello_user.ts \
   --target ES2022 \
   --module CommonJS \
   --outDir /tmp/typescript-hellouser-build \
   --noEmitOnError false
-printf 'Ada\n' | node /tmp/typescript-hellouser-build/hellouser.js
+printf 'Ada\n' | node /tmp/typescript-hellouser-build/hello_user.js
 ```
 
 ### Comprobación de tipos completa / Full type check
